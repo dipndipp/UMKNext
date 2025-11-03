@@ -33,9 +33,9 @@ export default function Navbar() {
         {/* LINKS */}
         <ul className="flex items-center gap-10 text-gray-700">
           {[
-            { label: "Beranda", href: "#beranda" },
-            { label: "Eksplor UMKM", href: "#explore" },
-            { label: "Tentang Kami", href: "#tentangkami" },
+            { label: "Beranda", href: "/" },
+            { label: "Eksplor UMKM", href: "/#explore" },
+            { label: "Tentang Kami", href: "about" },
           ].map((item) => (
             <li key={item.href} className="group relative">
               <a
