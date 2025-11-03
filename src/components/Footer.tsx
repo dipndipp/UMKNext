@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="relative bg-[#0B0F18] text-gray-300 overflow-hidden pt-48 pb-10">
+    <footer className="relative bg-[#0B0F18] text-gray-300 overflow-hidden pt-78 pb-10">
       {/* Lengkungan putih cekung ke bawah */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
         <svg
