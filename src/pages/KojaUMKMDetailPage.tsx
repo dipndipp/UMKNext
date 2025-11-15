@@ -26,7 +26,9 @@ export default function KojaUMKMDetailPage() {
   if (!umkm) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-6 text-center bg-white px-6">
-        <p className="text-2xl font-semibold text-gray-800">UMKM tidak ditemukan</p>
+        <p className="text-2xl font-semibold text-gray-800">
+          UMKM tidak ditemukan
+        </p>
         <Link
           to="/umkm-koja"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 transition"
@@ -63,11 +65,16 @@ export default function KojaUMKMDetailPage() {
           <p className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-black/30 border border-white/20 text-xs tracking-[0.25em] uppercase text-white/80 shadow-lg">
             {umkm.category} • {umkm.status}
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-4">{umkm.name}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-4">
+            {umkm.name}
+          </h1>
           <p className="max-w-3xl text-white/90 text-lg">{umkm.description}</p>
           <div className="flex flex-wrap gap-2 mt-6">
             {umkm.tags.map((tag) => (
-              <span key={tag} className="px-3 py-1 rounded-full bg-white/20 text-sm font-semibold">
+              <span
+                key={tag}
+                className="px-3 py-1 rounded-full bg-white/20 text-sm font-semibold"
+              >
                 {tag}
               </span>
             ))}
@@ -87,17 +94,39 @@ export default function KojaUMKMDetailPage() {
             >
               <h2 className="text-2xl font-semibold mb-6">Profil Usaha</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <InfoItem icon={<FaUserTie />} label="Pemilik" value={umkm.owner} />
-                <InfoItem icon={<FaClock />} label="Jam Operasional" value={umkm.hours} />
-                <InfoItem icon={<FaUsers />} label="Jumlah Tim" value={umkm.employees} />
-                <InfoItem icon={<FaStar className="text-amber-500" />} label="Rating" value={`${umkm.rating.toFixed(1)} / 5`} />
+                <InfoItem
+                  icon={<FaUserTie />}
+                  label="Pemilik"
+                  value={umkm.owner}
+                />
+                <InfoItem
+                  icon={<FaClock />}
+                  label="Jam Operasional"
+                  value={umkm.hours}
+                />
+                <InfoItem
+                  icon={<FaUsers />}
+                  label="Jumlah Tim"
+                  value={umkm.employees}
+                />
+                <InfoItem
+                  icon={<FaStar className="text-amber-500" />}
+                  label="Rating"
+                  value={`${umkm.rating.toFixed(1)} / 5`}
+                />
               </div>
               <div className="mt-6">
-                <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-3">Layanan utama</p>
+                <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-3">
+                  Layanan utama
+                </p>
                 <ul className="space-y-3">
                   {umkm.services.map((service) => (
-                    <li key={service} className="flex items-center gap-3 text-gray-700">
-                      <span className="w-2 h-2 rounded-full bg-blue-500" /> {service}
+                    <li
+                      key={service}
+                      className="flex items-center gap-3 text-gray-700"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-blue-500" />{" "}
+                      {service}
                     </li>
                   ))}
                 </ul>
@@ -145,11 +174,30 @@ export default function KojaUMKMDetailPage() {
             >
               <h2 className="text-2xl font-semibold mb-6">Kontak</h2>
               <div className="space-y-4 text-gray-700">
-                <ContactItem icon={<FaMapMarkerAlt />} label="Alamat" value={umkm.address} />
-                <ContactItem icon={<FaPhoneAlt />} label="Telepon" value={umkm.phone} />
-                {umkm.email && <ContactItem icon={<FaEnvelope />} label="Email" value={umkm.email} />}
+                <ContactItem
+                  icon={<FaMapMarkerAlt />}
+                  label="Alamat"
+                  value={umkm.address}
+                />
+                <ContactItem
+                  icon={<FaPhoneAlt />}
+                  label="Telepon"
+                  value={umkm.phone}
+                />
+                {umkm.email && (
+                  <ContactItem
+                    icon={<FaEnvelope />}
+                    label="Email"
+                    value={umkm.email}
+                  />
+                )}
                 {umkm.website && (
-                  <ContactLink icon={<FaGlobe />} label="Situs" href={umkm.website} text={umkm.website.replace(/^https?:\/\//, "")} />
+                  <ContactLink
+                    icon={<FaGlobe />}
+                    label="Situs"
+                    href={umkm.website}
+                    text={umkm.website.replace(/^https?:\/\//, "")}
+                  />
                 )}
                 {umkm.instagram && (
                   <ContactLink
@@ -169,9 +217,12 @@ export default function KojaUMKMDetailPage() {
               viewport={{ once: true }}
               className="rounded-3xl border border-blue-50 bg-gradient-to-br from-blue-50 to-cyan-50 p-8 text-gray-900 shadow-inner"
             >
-              <h3 className="text-xl font-semibold mb-3">Butuh bantuan kolaborasi?</h3>
+              <h3 className="text-xl font-semibold mb-3">
+                Butuh bantuan kolaborasi?
+              </h3>
               <p className="text-gray-600 mb-6">
-                Tim UMKNext siap membantu menghubungkan Anda dengan {umkm.name} untuk program promosi, pendanaan, atau event komunitas.
+                Tim UMKNext siap membantu menghubungkan Anda dengan {umkm.name}{" "}
+                untuk program promosi, pendanaan, atau event komunitas.
               </p>
               <Link
                 to="/contact"
@@ -189,22 +240,42 @@ export default function KojaUMKMDetailPage() {
   );
 }
 
-function InfoItem({ icon, label, value }: { icon: ReactNode; label: string; value: string }) {
+function InfoItem({
+  icon,
+  label,
+  value,
+}: {
+  icon: ReactNode;
+  label: string;
+  value: string;
+}) {
   return (
     <div className="flex items-center gap-3 p-3 rounded-2xl bg-gray-50 border border-gray-100">
       <div className="text-blue-600">{icon}</div>
       <div>
-        <p className="text-xs uppercase tracking-[0.3em] text-gray-400">{label}</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-gray-400">
+          {label}
+        </p>
         <p className="text-base font-semibold text-gray-900">{value}</p>
       </div>
     </div>
   );
 }
 
-function ContactItem({ icon, label, value }: { icon: ReactNode; label: string; value: string }) {
+function ContactItem({
+  icon,
+  label,
+  value,
+}: {
+  icon: ReactNode;
+  label: string;
+  value: string;
+}) {
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.25em] text-gray-400 mb-1">{label}</p>
+      <p className="text-xs uppercase tracking-[0.25em] text-gray-400 mb-1">
+        {label}
+      </p>
       <p className="flex items-center gap-2 text-base font-medium">
         <span className="text-blue-600">{icon}</span> {value}
       </p>
@@ -212,11 +283,28 @@ function ContactItem({ icon, label, value }: { icon: ReactNode; label: string; v
   );
 }
 
-function ContactLink({ icon, label, href, text }: { icon: ReactNode; label: string; href: string; text: string }) {
+function ContactLink({
+  icon,
+  label,
+  href,
+  text,
+}: {
+  icon: ReactNode;
+  label: string;
+  href: string;
+  text: string;
+}) {
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.25em] text-gray-400 mb-1">{label}</p>
-      <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-600 font-medium hover:underline">
+      <p className="text-xs uppercase tracking-[0.25em] text-gray-400 mb-1">
+        {label}
+      </p>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 text-blue-600 font-medium hover:underline"
+      >
         <span>{icon}</span> {text}
       </a>
     </div>
