@@ -242,7 +242,7 @@ export default function FeaturesPage() {
               Coba Sekarang
             </motion.a>
             <motion.a
-              href="/about"
+              href="/how-it-works"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
               className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/20 transition-all duration-300"
