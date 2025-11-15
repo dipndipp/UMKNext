@@ -188,32 +188,28 @@ export default function AboutPage() {
 
         {/* grid card */}
 
-        <section className="max-w-6xl mx-auto px-6 mt-52 mb-40">
-          <div className="grid md:grid-cols-2 gap-x-10 gap-y-10 justify-center items-stretch">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 mt-52 mb-40">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-x-10 md:gap-y-10 justify-center items-stretch">
             {[
               {
                 id: 1,
                 title: "Kolaborasi untuk Kemajuan",
                 desc: "Kami percaya bahwa kekuatan sejati ada pada kebersamaan. Dengan menjalin kolaborasi antara pelaku UMKM, pengguna, dan teknologi, kita dapat membangun ekosistem yang saling mendukung dan berkembang bersama menuju kemajuan ekonomi digital.",
-                width: "max-w-[480px]",
               },
               {
                 id: 2,
                 title: "Inovasi Tanpa Batas",
                 desc: "UMKNext hadir untuk mendorong setiap ide menjadi kenyataan. Melalui teknologi dan solusi berbasis AI, kami mengajak Anda untuk berinovasi tanpa batas, menciptakan peluang baru dan menjawab tantangan digital dengan cara yang lebih cerdas.",
-                width: "max-w-[530px]",
               },
               {
                 id: 3,
                 title: "Terhubung Lebih Dekat",
                 desc: "Jadilah bagian dari jaringan yang mempertemukan masyarakat dengan pelaku UMKM lokal. Dengan konektivitas yang kuat, kami ingin mempererat hubungan antara konsumen dan pelaku usaha di seluruh Indonesia.",
-                width: "max-w-[500px]",
               },
               {
                 id: 4,
                 title: "Tumbuh dan Berkembang",
                 desc: "Bersama UMKNext, kita bantu UMKM beradaptasi dengan perubahan zaman. Melalui dukungan digital dan jaringan luas, kami ingin setiap pelaku usaha lokal mampu bertahan, berkembang, dan bersinar di era modern.",
-                width: "max-w-[550px]",
               },
             ].map((item, i) => (
               <m.div
@@ -222,7 +218,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.15, duration: 0.6 }}
                 whileHover={{ scale: 1.02, y: -3 }}
-                className={`relative border-2 border-dashed border-gray-300/80 rounded-2xl p-8 bg-white shadow-sm hover:border-blue-400/80 hover:shadow-md transition-all duration-300 flex flex-col justify-between h-[215px] ${item.width}`}
+                className="relative border-2 border-dashed border-gray-300/80 rounded-2xl p-6 sm:p-8 bg-white shadow-sm hover:border-blue-400/80 hover:shadow-md transition-all duration-300 flex flex-col justify-between h-auto min-h-[215px]"
               >
                 {/* Nomor */}
                 <div className="absolute -top-4 -left-4 w-9 h-9 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-bold text-sm flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300">
