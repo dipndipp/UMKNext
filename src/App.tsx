@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { AnimatePresence, motion, type Transition } from "framer-motion";
 import HomeScreen from "./pages/HomeScreen";
 import Navbar from "./components/Navbar";
@@ -38,122 +43,122 @@ function AnimatedRoutes() {
   return (
     <>
       <Navbar />
-      <div className="pt-28">
+      <div className="">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <HomeScreen />
-            </motion.div>
-          }
-        />
-        <Route
-          path="chatbot"
-          element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <AiChat />
-            </motion.div>
-          }
-        />
-        <Route
-          path="about"
-          element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <AboutPage />
-            </motion.div>
-          }
-        />
-        <Route
-          path="features"
-          element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <FeaturesPage />
-            </motion.div>
-          }
-        />
-        <Route
-          path="how-it-works"
-          element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <HowItWorksPage />
-            </motion.div>
-          }
-        />
-        <Route
-          path="umkm-koja/:slug"
-          element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <KojaUMKMDetailPage />
-            </motion.div>
-          }
-        />
-        <Route
-          path="contact"
-          element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <ContactPage />
-            </motion.div>
-          }
-        />
-        <Route
-          path="umkm-koja"
-          element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <KojaUMKMPage />
-            </motion.div>
-          }
-        />
-        </Routes>
+            <Route
+              path="/"
+              element={
+                <motion.div
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  variants={pageVariants}
+                  transition={pageTransition}
+                >
+                  <HomeScreen />
+                </motion.div>
+              }
+            />
+            <Route
+              path="chatbot"
+              element={
+                <motion.div
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  variants={pageVariants}
+                  transition={pageTransition}
+                >
+                  <AiChat />
+                </motion.div>
+              }
+            />
+            <Route
+              path="about"
+              element={
+                <motion.div
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  variants={pageVariants}
+                  transition={pageTransition}
+                >
+                  <AboutPage />
+                </motion.div>
+              }
+            />
+            <Route
+              path="features"
+              element={
+                <motion.div
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  variants={pageVariants}
+                  transition={pageTransition}
+                >
+                  <FeaturesPage />
+                </motion.div>
+              }
+            />
+            <Route
+              path="how-it-works"
+              element={
+                <motion.div
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  variants={pageVariants}
+                  transition={pageTransition}
+                >
+                  <HowItWorksPage />
+                </motion.div>
+              }
+            />
+            <Route
+              path="umkm-koja/:slug"
+              element={
+                <motion.div
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  variants={pageVariants}
+                  transition={pageTransition}
+                >
+                  <KojaUMKMDetailPage />
+                </motion.div>
+              }
+            />
+            <Route
+              path="contact"
+              element={
+                <motion.div
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  variants={pageVariants}
+                  transition={pageTransition}
+                >
+                  <ContactPage />
+                </motion.div>
+              }
+            />
+            <Route
+              path="umkm-koja"
+              element={
+                <motion.div
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  variants={pageVariants}
+                  transition={pageTransition}
+                >
+                  <KojaUMKMPage />
+                </motion.div>
+              }
+            />
+          </Routes>
         </AnimatePresence>
       </div>
     </>
