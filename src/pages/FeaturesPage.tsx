@@ -124,7 +124,9 @@ export default function FeaturesPage() {
             className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-blue-100/60 border border-blue-200/50"
           >
             <LuSparkles className="text-blue-600" />
-            <span className="text-sm font-medium text-blue-700">Fitur Unggulan</span>
+            <span className="text-sm font-medium text-blue-700">
+              Fitur Unggulan
+            </span>
           </motion.div>
 
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -136,8 +138,9 @@ export default function FeaturesPage() {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Platform lengkap dengan fitur-fitur canggih untuk membantu Anda menemukan
-            dan mendukung UMKM lokal dengan cara yang lebih mudah dan menyenangkan.
+            Platform lengkap dengan fitur-fitur canggih untuk membantu Anda
+            menemukan dan mendukung UMKM lokal dengan cara yang lebih mudah dan
+            menyenangkan.
           </p>
         </motion.div>
 
@@ -214,7 +217,7 @@ export default function FeaturesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-white via-blue-50 to-blue-100">
+      <section className="py-20 px-6 bg-white">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -254,4 +257,3 @@ export default function FeaturesPage() {
     </div>
   );
 }
-
