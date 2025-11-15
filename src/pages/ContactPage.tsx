@@ -6,9 +6,6 @@ import {
   FaMapMarkerAlt,
   FaPaperPlane,
   FaCheckCircle,
-  FaInstagram,
-  FaGithub,
-  FaLinkedin,
 } from "react-icons/fa";
 import Footer from "../components/Footer";
 
@@ -50,8 +47,8 @@ export default function ContactPage() {
     {
       icon: FaPhone,
       label: "Telepon",
-      value: "+62 812-3456-7890",
-      link: "tel:+6281234567890",
+      value: "+62 856-9501-5226",
+      link: "https://wa.me/6285695015226",
       color: "from-green-500 to-emerald-500",
       bgColor: "bg-green-100/50",
       iconColor: "text-green-600",
@@ -64,30 +61,6 @@ export default function ContactPage() {
       color: "from-purple-500 to-pink-500",
       bgColor: "bg-purple-100/50",
       iconColor: "text-purple-600",
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: FaInstagram,
-      label: "Instagram",
-      link: "https://instagram.com/umknext",
-      color: "from-pink-500 to-rose-500",
-      hoverColor: "hover:border-pink-400 hover:shadow-pink-400/40",
-    },
-    {
-      icon: FaGithub,
-      label: "GitHub",
-      link: "https://github.com/umknext",
-      color: "from-gray-700 to-gray-900",
-      hoverColor: "hover:border-gray-700 hover:shadow-gray-700/40",
-    },
-    {
-      icon: FaLinkedin,
-      label: "LinkedIn",
-      link: "https://linkedin.com/company/umknext",
-      color: "from-blue-600 to-blue-800",
-      hoverColor: "hover:border-blue-500 hover:shadow-blue-500/40",
     },
   ];
 
@@ -108,7 +81,9 @@ export default function ContactPage() {
             className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-blue-100/60 border border-blue-200/50"
           >
             <FaEnvelope className="text-blue-600" />
-            <span className="text-sm font-medium text-blue-700">Kontak Kami</span>
+            <span className="text-sm font-medium text-blue-700">
+              Kontak Kami
+            </span>
           </motion.div>
 
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -161,7 +136,9 @@ export default function ContactPage() {
                         <div className="text-sm font-medium text-gray-500 mb-1">
                           {info.label}
                         </div>
-                        <div className="text-gray-900 font-semibold">{info.value}</div>
+                        <div className="text-gray-900 font-semibold">
+                          {info.value}
+                        </div>
                       </div>
                     </motion.a>
                   ))}
@@ -169,36 +146,6 @@ export default function ContactPage() {
               </motion.div>
 
               {/* Social Links */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="pt-8"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Ikuti Kami
-                </h3>
-                <div className="flex gap-4">
-                  {socialLinks.map((social, index) => (
-                    <motion.a
-                      key={index}
-                      href={social.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.4 + index * 0.1, duration: 0.3 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.1, y: -4 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`w-12 h-12 flex items-center justify-center rounded-xl border-2 border-gray-300 ${social.hoverColor} shadow-sm hover:shadow-lg transition-all duration-300`}
-                    >
-                      <social.icon className="text-xl text-gray-700" />
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
             </div>
 
             {/* Contact Form */}
@@ -338,4 +285,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
