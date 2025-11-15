@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaInstagram, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 type FooterLink = {
   label: string;
@@ -32,21 +31,6 @@ export default function Footer() {
         { label: "Kontak", href: "/contact" },
       ],
     },
-    {
-      title: "Sosial Media",
-      links: [
-        { label: "Instagram", href: "https://instagram.com", external: true },
-        { label: "GitHub", href: "https://github.com", external: true },
-        { label: "LinkedIn", href: "https://linkedin.com", external: true },
-      ],
-    },
-  ];
-
-  const socialIcons = [
-    { icon: FaInstagram, href: "https://instagram.com", color: "hover:text-pink-400" },
-    { icon: FaGithub, href: "https://github.com", color: "hover:text-gray-300" },
-    { icon: FaLinkedin, href: "https://linkedin.com", color: "hover:text-blue-400" },
-    { icon: FaEnvelope, href: "mailto:support@umknext.id", color: "hover:text-blue-400" },
   ];
 
   return (
@@ -80,7 +64,7 @@ export default function Footer() {
         <img
           src="/footer-img.webp"
           alt="UMKNext Logo"
-          className="w-[1100px] md:w-[1000px] select-none drop-shadow-[0_5px_20px_rgba(0,0,0,0.6)]"
+          className="w-[1100px] md:w-[1000px] select-none drop-shadow-[0_5px_20px_rgba(0,0,0,0.6)] mt-[100px]"
           draggable={false}
         />
         <p className="mt-3 text-sm md:text-base text-gray-400 tracking-wide">
@@ -106,23 +90,9 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-              Platform digital untuk menghubungkan masyarakat dengan UMKM lokal melalui teknologi AI.
+              Platform digital untuk menghubungkan masyarakat dengan UMKM lokal
+              melalui teknologi AI.
             </p>
-            <div className="flex gap-4">
-              {socialIcons.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  target={social.href.startsWith("http") ? "_blank" : undefined}
-                  rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800/50 border border-gray-700 text-gray-400 ${social.color} transition-all duration-300 hover:border-current`}
-                >
-                  <social.icon />
-                </motion.a>
-              ))}
-            </div>
           </motion.div>
 
           {/* Links Sections */}
