@@ -1,43 +1,110 @@
 import { useState } from "react";
+import { kojaUmkmList } from "../data/kojaUmkms";
+
+// Ganti dengan cara import API Key sesuai kebutuhan (misal dari .env)
+const OPENROUTER_API_KEY =
+  "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";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPaperPlane } from "react-icons/fa";
 
 export default function AiChat() {
-  const [messages, setMessages] = useState([
+  type Message = {
+    sender: string;
+    text: string;
+    isHtml?: boolean;
+  };
+  const [messages, setMessages] = useState<Message[]>([
     {
       sender: "ai",
-      text: "Halo! Saya Asisten UMKNext 🤖 Siap membantu kamu menjelajahi dunia UMKM.",
+      text:
+        "Hai! 👋 Aku asisten UMKNext. Mau cari rekomendasi UMKM di Koja? Coba tanya: <br /><br />" +
+        "<b>• Toko roti terenak di Koja apa ya?</b><br />" +
+        "<b>• Ada coffee shop yang bisa buat kerja remote?</b><br />" +
+        "<b>• UMKM fashion yang bisa custom hijab?</b><br /><br />" +
+        "Tanya aja apa pun, aku siap bantu kasih rekomendasi dan alasannya!",
+      isHtml: true,
     },
   ]);
   const [input, setInput] = useState("");
 
-  const handleSend = () => {
+  // Fungsi untuk memanggil OpenRouter GLM 4.5 Air
+  const getAiRecommendation = async (question: string): Promise<string> => {
+    const umkmContext = kojaUmkmList
+      .map(
+        (u, i) =>
+          `${i + 1}. ${u.name} (${u.category})\nRating: ${
+            u.rating
+          } / 5\nAlamat: ${u.address}\nDeskripsi: ${u.description}`
+      )
+      .join("\n\n");
+    const prompt = `Berikut adalah data UMKM di Koja:\n${umkmContext}\n\nJawab pertanyaan user hanya berdasarkan data di atas. Jika user bertanya seperti 'mana rekomendasi toko roti yang bagus?', berikan rekomendasi UMKM yang relevan dari data tersebut. Setelah memberikan rekomendasi, tambahkan alasan kenapa tempat tersebut direkomendasikan (misal: rating tinggi, deskripsi menarik, kategori sesuai, dll). Jika tidak ada yang cocok, jawab dengan sopan bahwa tidak ditemukan. Format jawaban dengan list dan baris baru agar mudah dibaca.`;
+    try {
+      const response = await fetch(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+          },
+          body: JSON.stringify({
+            model: "z-ai/glm-4.5-air:free",
+            messages: [
+              { role: "system", content: prompt },
+              { role: "user", content: question },
+            ],
+          }),
+        }
+      );
+      const data = await response.json();
+      let aiText =
+        data.choices?.[0]?.message?.content ||
+        "Maaf, terjadi kesalahan pada AI.";
+      // Format agar lebih rapi di tampilan chat
+      aiText = aiText.replace(/\n/g, "<br />");
+      return aiText;
+    } catch (err) {
+      return "Maaf, terjadi kesalahan saat menghubungi AI.";
+    }
+  };
+
+  const handleSend = async () => {
     if (!input.trim()) return;
     const userMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
-
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
+    setMessages((prev) => [
+      ...prev,
+      {
+        sender: "ai",
+        text: "Sedang mencari rekomendasi...",
+      },
+    ]);
+    const currentInput = input;
+    setInput("");
+    const aiText = await getAiRecommendation(currentInput);
+    setMessages((prev) => {
+      const filtered = prev.filter(
+        (m) => m.text !== "Sedang mencari rekomendasi..."
+      );
+      return [
+        ...filtered,
         {
           sender: "ai",
-          text: "Terima kasih! Fitur AI akan segera tersedia untuk menjawab pertanyaan kamu secara interaktif ✨",
+          text: aiText,
+          isHtml: true,
         },
-      ]);
-    }, 800);
-
-    setInput("");
+      ];
+    });
   };
-
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-gradient-to-b from-blue-50/30 via-white to-white flex flex-col items-center py-8 px-4 font-sans"
     >
       {/* Chat Container */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.1 }}
@@ -79,7 +146,14 @@ export default function AiChat() {
                     : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_16px_rgba(59,130,246,0.3)]"
                 }`}
               >
-                {msg.text}
+                {msg.isHtml &&
+                typeof msg.text === "string" &&
+                msg.text !== undefined &&
+                msg.text !== null ? (
+                  <span dangerouslySetInnerHTML={{ __html: msg.text }} />
+                ) : (
+                  msg.text
+                )}
               </motion.div>
             </motion.div>
           ))}
@@ -87,7 +161,7 @@ export default function AiChat() {
       </motion.div>
 
       {/* Input bar */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.3 }}
@@ -105,6 +179,11 @@ export default function AiChat() {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Tanyakan apa saja kepada Asisten AI..."
             className="flex-grow outline-none bg-transparent text-gray-700 text-sm md:text-base placeholder-gray-400"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSend();
+              }
+            }}
           />
           <motion.button
             whileTap={{ scale: 0.9 }}
