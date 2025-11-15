@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { LuSparkles } from "react-icons/lu";
 import Footer from "../components/Footer";
+import { kojaUmkmList } from "../data/kojaUmkms";
 
 export default function HomeScreen() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -68,6 +69,8 @@ export default function HomeScreen() {
         "UMKNext menggabungkan teknologi AI dengan pendekatan human-centered design untuk memberikan pengalaman eksplorasi UMKM yang intuitif dan interaktif.",
     },
   ];
+
+  const featuredUmkms = kojaUmkmList.slice(0, 2);
 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const toggleFAQ = (index: number) =>
@@ -235,7 +238,9 @@ export default function HomeScreen() {
                 className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-blue-100/50 border border-blue-200/50"
               >
                 <LuSparkles className="text-blue-600" />
-                <span className="text-sm font-medium text-blue-700">Asisten AI</span>
+                <span className="text-sm font-medium text-blue-700">
+                  Asisten AI
+                </span>
               </motion.div>
               <h3 className="text-3xl font-bold text-gray-900 mb-4">
                 Asisten AI Interaktif
@@ -288,7 +293,9 @@ export default function HomeScreen() {
                 className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-cyan-100/50 border border-cyan-200/50 md:ml-auto"
               >
                 <FaMapMarkedAlt className="text-cyan-600" />
-                <span className="text-sm font-medium text-cyan-700">Eksplorasi</span>
+                <span className="text-sm font-medium text-cyan-700">
+                  Eksplorasi
+                </span>
               </motion.div>
               <h3 className="text-3xl font-bold text-gray-900 mb-4">
                 Eksplorasi UMKM Mudah
@@ -361,9 +368,9 @@ export default function HomeScreen() {
 
         {/* CARD LIST */}
         <div className="max-w-6xl mx-auto flex flex-col gap-12 px-6">
-          {[1, 2].map((_, i) => (
+          {featuredUmkms.map((umkm, i) => (
             <motion.div
-              key={i}
+              key={umkm.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.5 }}
@@ -373,38 +380,40 @@ export default function HomeScreen() {
               {/* Image */}
               <div className="md:w-1/3 bg-gradient-to-b from-blue-400 to-blue-500 p-4 flex items-center justify-center">
                 <img
-                  src="mockup-ai.webp"
-                  alt="UMKM mockup"
+                  src={umkm.heroImage || "mockup-ai.webp"}
+                  alt={umkm.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-56 md:h-64 object-cover rounded-xl shadow-md transform group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
               {/* Content */}
               <div className="md:w-2/3 p-6 md:p-8 text-left flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 mb-2">
+                  <LuSparkles className="text-base" />
+                  <span>{umkm.category}</span>
+                </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-1">
-                  Eksplorasi UMKM Cerdas
+                  {umkm.name}
                 </h3>
-                <p className="text-gray-600 mb-4">
-                  Temukan dan kenali UMKM terbaik melalui sistem pencarian
-                  interaktif serta visual modern.
-                </p>
-                <div className="flex items-center gap-2 mb-3 text-gray-700">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5 text-blue-600"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M16 6a2 2 0 11-4 0 2 2 0 014 0zM8 8a4 4 0 100 8h4a4 4 0 100-8H8z" />
-                  </svg>
-                  <span>Toko Elian Rom</span>
+                <p className="text-gray-600 mb-4">{umkm.description}</p>
+                <div className="flex flex-wrap items-center gap-4 text-gray-700 text-sm mb-4">
+                  <div className="flex items-center gap-2">
+                    <FaMapMarkedAlt className="text-cyan-600" />
+                    <span>{umkm.address}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <LuSparkles className="text-yellow-500" />
+                    <span>{umkm.rating.toFixed(1)} rating</span>
+                  </div>
                 </div>
                 <p className="font-medium text-gray-800 mb-5">
-                  Rp. 12.000 / Produk
+                  Dikelola oleh {umkm.owner} • {umkm.status}
                 </p>
 
                 <motion.a
-                  href="#"
+                  href={`/umkm-koja/${umkm.slug}`}
                   whileHover={{ x: 4 }}
                   className="inline-flex items-center gap-2 self-start bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-5 py-2.5 rounded-full shadow hover:shadow-lg transition-all font-medium"
                 >
