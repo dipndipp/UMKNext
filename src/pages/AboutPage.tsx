@@ -290,9 +290,9 @@ export default function AboutPage() {
                 role: "Ketua Tim & Visionary",
                 imgActive: "/robot1.webp",
                 imgInactive: "/robot2.webp",
-                instagram: "https://instagram.com/",
-                github: "https://github.com/",
-                linkedin: "https://linkedin.com/in/",
+                instagram: "https://instagram.com/constantinofall",
+                github: "https://github.com/NaufalWaiz",
+                linkedin: "https://linked.in/muhammadnaufalwaiz",
               },
               {
                 id: 2,
@@ -300,9 +300,9 @@ export default function AboutPage() {
                 role: "Frontend Developer & AI Developer",
                 imgActive: "/robot1.webp",
                 imgInactive: "/robot2.webp",
-                instagram: "https://instagram.com/",
-                github: "https://github.com/",
-                linkedin: "https://linkedin.com/in/",
+                instagram: "https://instagram.com/dipnadipp",
+                github: "https://github.com/dipndipp",
+                linkedin: "https://linkedin.com/in/dipnadipp",
               },
               {
                 id: 3,
@@ -310,9 +310,9 @@ export default function AboutPage() {
                 role: "UI/UX Designer",
                 imgActive: "/robot1.webp",
                 imgInactive: "/robot2.webp",
-                instagram: "https://instagram.com/",
-                github: "https://github.com/",
-                linkedin: "https://linkedin.com/in/",
+                instagram: "https://instagram.com/vrlnb_",
+                github: "https://github.com/rdhav",
+                linkedin: "http://linkedin.com/in/alvin-dwi-ardha-815b52382",
               },
             ];
 
