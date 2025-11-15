@@ -1,10 +1,9 @@
 @import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/pagination";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-@import "swiper/css";
-@import "swiper/css/pagination";
 
 html,
 body {

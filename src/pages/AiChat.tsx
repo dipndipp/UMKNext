@@ -30,9 +30,19 @@ export default function AiChat() {
   };
 
   return (
-    <section className="min-h-screen bg-white flex flex-col items-center py-8 px-4 font-sans">
+    <motion.section 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-gradient-to-b from-blue-50/30 via-white to-white flex flex-col items-center py-8 px-4 font-sans"
+    >
       {/* Chat Container */}
-      <div className="w-full max-w-4xl mt-16 mb-24 bg-white rounded-[32px] border border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.05)] p-8 space-y-5 overflow-y-auto transition-all">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="w-full max-w-4xl mt-16 mb-24 bg-white rounded-[32px] border border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] p-8 space-y-5 overflow-y-auto transition-all duration-300"
+      >
         <AnimatePresence>
           {messages.map((msg, idx) => (
             <motion.div
@@ -59,11 +69,14 @@ export default function AiChat() {
 
               {/* Chat bubble */}
               <motion.div
-                whileHover={{ scale: 1.01 }}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                whileHover={{ scale: 1.02, y: -2 }}
+                transition={{ duration: 0.2 }}
                 className={`px-5 py-3 max-w-[70%] text-[15px] md:text-base leading-relaxed rounded-2xl ${
                   msg.sender === "ai"
-                    ? "bg-white border border-blue-100 text-gray-800 shadow-[0_2px_6px_rgba(0,0,0,0.05)]"
-                    : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-[0_4px_10px_rgba(0,0,0,0.1)]"
+                    ? "bg-white border border-blue-100 text-gray-800 shadow-[0_2px_6px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
+                    : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_16px_rgba(59,130,246,0.3)]"
                 }`}
               >
                 {msg.text}
@@ -71,10 +84,15 @@ export default function AiChat() {
             </motion.div>
           ))}
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       {/* Input bar */}
-      <div className="fixed bottom-8 w-full max-w-3xl px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.3 }}
+        className="fixed bottom-8 w-full max-w-3xl px-4"
+      >
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -97,7 +115,7 @@ export default function AiChat() {
             <FaPaperPlane size={15} />
           </motion.button>
         </motion.div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

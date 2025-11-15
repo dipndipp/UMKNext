@@ -1,13 +1,11 @@
 // src/pages/AboutPage.tsx
 import { motion as m } from "framer-motion";
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export default function AboutPage() {
   return (
     <main className="bg-white text-gray-800 overflow-x-hidden font-sans">
-      <Navbar />
       {/* ===== HERO SECTION ===== */}
       <section className="relative flex flex-col items-center text-center px-6 pt-40 pb-32">
         <div className="flex items-center gap-2 select-none px-4 py-1.5 rounded-[20px] border border-gray-300/70 shadow-sm backdrop-blur-md bg-white/70 hover:bg-white/90 transition-all duration-300">

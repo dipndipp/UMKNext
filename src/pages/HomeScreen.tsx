@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
-import Navbar from "../components/Navbar";
 import {
   FaStore,
   FaRobot,
@@ -9,7 +9,9 @@ import {
   FaArrowRight,
   FaPlus,
   FaMinus,
+  FaMapMarkedAlt,
 } from "react-icons/fa";
+import { LuSparkles } from "react-icons/lu";
 import Footer from "../components/Footer";
 
 export default function HomeScreen() {
@@ -73,8 +75,6 @@ export default function HomeScreen() {
 
   return (
     <div className="overflow-x-hidden font-sans text-gray-800">
-      <Navbar />
-
       {/* HERO SECTION */}
       <section
         ref={heroRef}
@@ -127,15 +127,28 @@ export default function HomeScreen() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="flex flex-wrap justify-center gap-4"
         >
-          <button className="flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-blue-500 to-cyan-500 shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300">
-            <FaStore className="text-lg" />
-            Eksplor UMKM
-          </button>
+          <motion.a
+            href="#explore"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center gap-2 px-8 py-4 rounded-full text-white font-semibold bg-gradient-to-r from-blue-500 to-cyan-500 shadow-lg hover:shadow-xl hover:shadow-blue-500/50 transition-all duration-300 relative overflow-hidden group"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <FaStore className="text-lg relative z-10" />
+            <span className="relative z-10">Eksplor UMKM</span>
+          </motion.a>
 
-          <button className="flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300">
-            <FaRobot className="text-lg" />
-            Tanya Asisten AI
-          </button>
+          <Link to="/chatbot">
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center gap-2 px-8 py-4 rounded-full text-white font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg hover:shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 relative overflow-hidden group"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <FaRobot className="text-lg relative z-10" />
+              <span className="relative z-10">Tanya Asisten AI</span>
+            </motion.div>
+          </Link>
         </motion.div>
 
         {/* Panah Scroll */}
@@ -215,21 +228,33 @@ export default function HomeScreen() {
             className="flex flex-col md:flex-row items-center gap-10 px-6"
           >
             <div className="flex-1 text-left">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-blue-100/50 border border-blue-200/50"
+              >
+                <LuSparkles className="text-blue-600" />
+                <span className="text-sm font-medium text-blue-700">Asisten AI</span>
+              </motion.div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">
                 Asisten AI Interaktif
               </h3>
-              <p className="text-gray-600 text-lg leading-relaxed mb-5">
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
                 Membantu pengguna mencari dan menemukan UMKM sesuai kebutuhan
                 hanya dengan percakapan sederhana. Cukup tanya — AI akan
                 merekomendasikan usaha terbaik di sekitar Anda.
               </p>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-blue-600 font-medium group"
-              >
-                Coba Asisten AI Sekarang
-                <FaArrowRight className="transition-transform group-hover:translate-x-1" />
-              </a>
+              <Link to="/chatbot">
+                <motion.div
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 text-blue-600 font-semibold group cursor-pointer"
+                >
+                  Coba Asisten AI Sekarang
+                  <FaArrowRight className="transition-transform group-hover:translate-x-1" />
+                </motion.div>
+              </Link>
             </div>
 
             <motion.div
@@ -256,21 +281,32 @@ export default function HomeScreen() {
             className="flex flex-col md:flex-row-reverse items-center gap-10 px-6"
           >
             <div className="flex-1 text-left md:text-right">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-cyan-100/50 border border-cyan-200/50 md:ml-auto"
+              >
+                <FaMapMarkedAlt className="text-cyan-600" />
+                <span className="text-sm font-medium text-cyan-700">Eksplorasi</span>
+              </motion.div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">
                 Eksplorasi UMKM Mudah
               </h3>
-              <p className="text-gray-600 text-lg leading-relaxed mb-5">
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
                 Temukan berbagai usaha dengan tampilan peta interaktif dan
                 sistem pencarian cepat. Jelajahi UMKM lokal yang relevan hanya
                 dalam beberapa klik.
               </p>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-cyan-600 font-medium group"
+              <motion.a
+                href="#explore"
+                whileHover={{ x: -4 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 text-cyan-600 font-semibold group md:ml-auto cursor-pointer"
               >
+                <FaArrowRight className="transition-transform group-hover:-translate-x-1 rotate-180" />
                 Jelajahi Sekitar
-                <FaArrowRight className="transition-transform group-hover:translate-x-1" />
-              </a>
+              </motion.a>
             </div>
 
             <motion.div
@@ -325,13 +361,13 @@ export default function HomeScreen() {
 
         {/* CARD LIST */}
         <div className="max-w-6xl mx-auto flex flex-col gap-12 px-6">
-          {[1, 2].map((item, i) => (
+          {[1, 2].map((_, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.2 }}
-              whileHover={{ scale: 1.02 }}
+              transition={{ delay: i * 0.2, duration: 0.5 }}
+              whileHover={{ scale: 1.02, y: -4 }}
               className="group relative flex flex-col md:flex-row bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.08)] transition-all duration-300"
             >
               {/* Image */}

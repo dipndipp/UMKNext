@@ -1,8 +1,64 @@
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { FaInstagram, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+
+type FooterLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+type FooterSection = {
+  title: string;
+  links: FooterLink[];
+};
+
 export default function Footer() {
+  const footerLinks: FooterSection[] = [
+    {
+      title: "Platform",
+      links: [
+        { label: "Beranda", href: "/" },
+        { label: "Fitur", href: "/features" },
+        { label: "Cara Kerja", href: "/how-it-works" },
+        { label: "Tentang Kami", href: "/about" },
+      ],
+    },
+    {
+      title: "Layanan",
+      links: [
+        { label: "Asisten AI", href: "/chatbot" },
+        { label: "Eksplor UMKM", href: "/#explore" },
+        { label: "Kontak", href: "/contact" },
+      ],
+    },
+    {
+      title: "Sosial Media",
+      links: [
+        { label: "Instagram", href: "https://instagram.com", external: true },
+        { label: "GitHub", href: "https://github.com", external: true },
+        { label: "LinkedIn", href: "https://linkedin.com", external: true },
+      ],
+    },
+  ];
+
+  const socialIcons = [
+    { icon: FaInstagram, href: "https://instagram.com", color: "hover:text-pink-400" },
+    { icon: FaGithub, href: "https://github.com", color: "hover:text-gray-300" },
+    { icon: FaLinkedin, href: "https://linkedin.com", color: "hover:text-blue-400" },
+    { icon: FaEnvelope, href: "mailto:support@umknext.id", color: "hover:text-blue-400" },
+  ];
+
   return (
-    <footer className="relative bg-[#0B0F18] text-gray-300 overflow-hidden pt-78 pb-10">
+    <footer className="relative bg-[#0B0F18] text-gray-300 overflow-hidden pt-20 pb-10">
       {/* Lengkungan putih cekung ke bawah */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="absolute top-0 left-0 w-full overflow-hidden leading-none pointer-events-none"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 220"
@@ -11,50 +67,121 @@ export default function Footer() {
         >
           <path fill="#ffffff" d="M0,0 L1440,0 C960,220 480,220 0,0 Z" />
         </svg>
-      </div>
+      </motion.div>
 
       {/* konten tengah */}
-      <div className="relative z-10 -mt-6 flex flex-col items-center text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="relative z-10 -mt-6 flex flex-col items-center text-center"
+      >
         <img
-          src="footer-img.webp"
+          src="/footer-img.webp"
           alt="UMKNext Logo"
           className="w-[1100px] md:w-[1000px] select-none drop-shadow-[0_5px_20px_rgba(0,0,0,0.6)]"
           draggable={false}
         />
         <p className="mt-3 text-sm md:text-base text-gray-400 tracking-wide">
-          Menghubungkan masyarakat dan UMKM melalui desain cerdas.
+          Menghubungkan masyarakat dan UMKM melalui teknologi cerdas.
         </p>
-      </div>
+      </motion.div>
 
-      {/* bar bawah */}
-      <div className="relative z-10 mt-12 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-start md:items-center justify-between text-sm">
-        {/* kiri */}
-        <div className="flex items-center gap-2">
-          <img src="icon.png" alt="" className="w-7" />
-          <span className="text-white font-semibold tracking-wide">
-            UMKNext
-          </span>
+      {/* Main Footer Content */}
+      <div className="relative z-10 mt-16 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          {/* Brand Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="md:col-span-1"
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <img src="/icon.png" alt="UMKNext" className="w-8 h-8" />
+              <span className="text-white font-bold text-lg tracking-wide">
+                UMKNext
+              </span>
+            </div>
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+              Platform digital untuk menghubungkan masyarakat dengan UMKM lokal melalui teknologi AI.
+            </p>
+            <div className="flex gap-4">
+              {socialIcons.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800/50 border border-gray-700 text-gray-400 ${social.color} transition-all duration-300 hover:border-current`}
+                >
+                  <social.icon />
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Links Sections */}
+          {footerLinks.map((section, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-white font-semibold mb-4">{section.title}</h3>
+              <ul className="space-y-3">
+                {section.links.map((link, linkIndex) => (
+                  <li key={linkIndex}>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors duration-200 text-sm inline-block hover:translate-x-1 transform transition-transform"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className="text-gray-400 hover:text-white transition-colors duration-200 text-sm inline-block hover:translate-x-1 transform transition-transform"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
 
-        {/* kanan: nav + copyright di bawah tapi sejajar kanan */}
-        <div className="flex flex-col items-end text-gray-400 font-medium">
-          <nav className="flex gap-8 mb-1">
-            <a href="#beranda" className="hover:text-white transition">
-              Beranda
-            </a>
-            <a href="#eksplorumkm" className="hover:text-white transition">
-              Eksplor UMKM
-            </a>
-            <a href="#tentangkami" className="hover:text-white transition">
-              Tentang Kami
-            </a>
-          </nav>
-
-          {/* copyright sejajar indent kanan */}
-          <p className="text-xs text-gray-500 text-right">
-            © 2025 UMKNext — Indonesia. All rights reserved.
+        {/* Bottom Bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500"
+        >
+          <p className="mb-4 md:mb-0">
+            (c) 2025 UMKNext - Indonesia. All rights reserved.
           </p>
-        </div>
+          <div className="flex gap-6 text-xs">
+            <a href="#" className="hover:text-white transition">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-white transition">
+              Terms of Service
+            </a>
+          </div>
+        </motion.div>
       </div>
     </footer>
   );
