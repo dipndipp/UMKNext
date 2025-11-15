@@ -2,8 +2,7 @@ import { useState } from "react";
 import { kojaUmkmList } from "../data/kojaUmkms";
 
 // Ganti dengan cara import API Key sesuai kebutuhan (misal dari .env)
-const OPENROUTER_API_KEY =
-  "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";
+const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPaperPlane } from "react-icons/fa";
 
