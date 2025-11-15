@@ -4,6 +4,43 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 
 export default function AboutPage() {
+  const diagramPoints = [
+    {
+      title: "Melihat potensi besar pelaku usaha lokal",
+      description:
+        "Melihat potensi besar pelaku usaha lokal yang belum mendapat eksposur optimal di dunia online.",
+      position:
+        "md:absolute md:top-[8%] lg:top-[6%] md:left-[4%] lg:left-[6%] md:max-w-[270px] md:text-left",
+    },
+    {
+      title: "Berawal dari visi sederhana",
+      description: "Membantu UMKM lokal agar tidak tertinggal di era digital.",
+      position:
+        "md:absolute md:top-[8%] lg:top-[6%] md:right-[4%] lg:right-[6%] md:max-w-[270px] md:text-right",
+    },
+    {
+      title: "Menggabungkan inovasi dan kolaborasi",
+      description:
+        "Menggabungkan inovasi dan kolaborasi untuk mempercepat digitalisasi UMKM di seluruh Indonesia.",
+      position:
+        "md:absolute md:top-[46%] lg:top-[44%]  md:left-[2%] lg:left-[-2%] md:max-w-[255px] md:text-left",
+    },
+    {
+      title: "Menghadirkan platform yang menghubungkan",
+      description:
+        "Menghadirkan platform yang menghubungkan pelaku UMKM dan masyarakat melalui sistem berbasis AI.",
+      position:
+        "md:absolute md:top-[46%] lg:top-[44%] md:right-[-2%] md:max-w-[255px] md:text-right",
+    },
+    {
+      title: "Menjadikan digitalisasi sebagai solusi nyata",
+      description:
+        "Mendorong pertumbuhan ekonomi lokal yang inklusif dan berkelanjutan melalui digitalisasi yang berdampak nyata.",
+      position:
+        "md:absolute md:bottom-[-14%] lg:bottom-[-10%] md:left-1/2 md:-translate-x-1/2 md:max-w-[320px] md:text-center",
+    },
+  ];
+
   return (
     <main className="bg-white text-gray-800 overflow-x-hidden font-sans">
       {/* ===== HERO SECTION ===== */}
@@ -33,10 +70,10 @@ export default function AboutPage() {
       </section>
 
       {/* ===== DIAGRAM SECTION ===== */}
-      <section className="relative mt-16 w-full max-w-[1150px] mx-auto flex justify-center items-center min-h-[640px] px-6">
+      <section className="relative mt-16 w-full max-w-[1150px] mx-auto flex flex-col items-center min-h-[680px] md:min-h-[820px] px-6 md:px-10 py-12 md:py-16">
         {/* Efek pulse glow */}
         <div className="absolute inset-0 flex justify-center items-center">
-          <div className="w-[300px] h-[300px] bg-blue-200/20 blur-3xl rounded-full animate-pulse"></div>
+          <div className="w-[320px] h-[320px] bg-blue-200/20 blur-3xl rounded-full animate-pulse" />
         </div>
 
         {/* Gambar utama */}
@@ -46,87 +83,48 @@ export default function AboutPage() {
           initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="w-[68%] max-w-[717px] h-auto object-contain select-none pointer-events-none z-10"
+          className="relative w-full max-w-[740px] h-auto object-contain select-none pointer-events-none z-10 md:w-[70%]"
         />
 
-        {/* Teks kiri atas */}
-        <m.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="absolute top-[8%] left-[7%] max-w-[270px] text-left"
-        >
-          <h3 className="font-semibold text-gray-900 text-[15px] md:text-base">
-            Melihat potensi besar pelaku usaha lokal
-          </h3>
-          <p className="text-gray-600 text-sm mt-1 leading-relaxed">
-            Melihat potensi besar pelaku usaha lokal yang belum mendapat
-            eksposur optimal di dunia online.
-          </p>
-        </m.div>
+        {/* Mobile-first grid for readability */}
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5 w-full max-w-4xl md:hidden z-20">
+          {diagramPoints.map((point, idx) => (
+            <m.div
+              key={point.title}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * idx }}
+              className="rounded-xl bg-white/85 backdrop-blur-md border border-gray-200 shadow-sm p-4 text-center"
+            >
+              <h3 className="font-semibold text-gray-900 text-base leading-snug">
+                {point.title}
+              </h3>
+              <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                {point.description}
+              </p>
+            </m.div>
+          ))}
+        </div>
 
-        {/* Teks kanan atas */}
-        <m.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="absolute top-[8%] right-[7%] max-w-[270px] text-right"
-        >
-          <h3 className="font-semibold text-gray-900 text-[15px] md:text-base">
-            Berawal dari visi sederhana
-          </h3>
-          <p className="text-gray-600 text-sm mt-1 leading-relaxed">
-            Membantu UMKM lokal agar tidak tertinggal di era digital.
-          </p>
-        </m.div>
-
-        {/* Teks kiri tengah */}
-        <m.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="absolute top-[44%] left-[1%] max-w-[255px] text-left"
-        >
-          <h3 className="font-semibold text-gray-900 text-[15px] md:text-base">
-            Menggabungkan inovasi dan kolaborasi
-          </h3>
-          <p className="text-gray-600 text-sm mt-1 leading-relaxed">
-            Menggabungkan inovasi dan kolaborasi untuk mempercepat digitalisasi
-            UMKM di seluruh Indonesia.
-          </p>
-        </m.div>
-
-        {/* Teks kanan tengah */}
-        <m.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="absolute top-[44%] right-[2.5%] max-w-[255px] text-right"
-        >
-          <h3 className="font-semibold text-gray-900 text-[15px] md:text-base">
-            Menghadirkan platform yang menghubungkan
-          </h3>
-          <p className="text-gray-600 text-sm mt-1 leading-relaxed">
-            Menghadirkan platform yang menghubungkan pelaku UMKM dan masyarakat
-            melalui sistem berbasis AI.
-          </p>
-        </m.div>
-
-        {/* Teks bawah tengah */}
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="absolute bottom-[-22%] left-1/2 -translate-x-1/2 max-w-[320px] text-center"
-        >
-          <h3 className="font-semibold text-gray-900 text-[15px] md:text-base">
-            Menjadikan digitalisasi sebagai solusi nyata
-          </h3>
-          <p className="text-gray-600 text-sm mt-1 leading-relaxed">
-            Mendorong pertumbuhan ekonomi lokal yang inklusif dan berkelanjutan
-            melalui digitalisasi yang berdampak nyata.
-          </p>
-        </m.div>
+        {/* Desktop overlay positions */}
+        <div className="hidden md:block absolute inset-0 pointer-events-none">
+          {diagramPoints.map((point, idx) => (
+            <m.div
+              key={point.title}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * idx }}
+              className={`rounded-xl bg-white/90 backdrop-blur-md border border-gray-200 shadow-sm p-4 text-center ${point.position}`}
+            >
+              <h3 className="font-semibold text-gray-900 text-[15px] leading-snug">
+                {point.title}
+              </h3>
+              <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                {point.description}
+              </p>
+            </m.div>
+          ))}
+        </div>
       </section>
 
       {/* ===== VISI & MISI SECTION ===== */}
