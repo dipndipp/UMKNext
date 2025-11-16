@@ -1,75 +1,91 @@
-# React + TypeScript + Vite
+# 🛒 UMKNext — Modern UMKM Explorer Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+UMKNext adalah platform eksplorasi UMKM modern yang dirancang untuk menghubungkan masyarakat dengan pelaku UMKM melalui pendekatan digital yang cerdas, cepat, dan intuitif.  
+Proyek ini berfokus pada **penyajian informasi UMKM secara visual**, pengalaman pengguna yang interaktif, serta integrasi **AI Assistant** untuk membantu pengguna menemukan rekomendasi UMKM secara personal.
 
-Currently, two official plugins are available:
+Website: **https://umknext.vercel.app**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Key Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+### 🔎 1. AI Recommendation Chat
+Pengguna bisa bertanya seperti:  
+**“Rekomendasi ayam geprek terenak di Jakarta Utara dong?”**
 
-Note: This will impact Vite dev & build performances.
+AI akan memberikan rekomendasi UMKM berdasarkan kategori, lokasi, serta preferensi pengguna.
 
-## Expanding the ESLint configuration
+### 🗂️ 2. Modern UMKM Explorer
+- UI/UX bersih dan modern  
+- Navigasi cepat  
+- Detail UMKM ditampilkan secara jelas & efektif
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🎨 3. Smooth Animations & Micro-interactions
+- Diagram animated  
+- Hover effects halus  
+- Framer Motion untuk transisi premium  
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 👥 4. Interactive Team Carousel
+Carousel avatar robot dengan:
+- Drag & slide movement  
+- Avatar aktif berwarna biru  
+- Caption nama & jabatan berubah dinamis  
+- Social links card interaktif (Instagram, GitHub, LinkedIn)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧩 Project Overview
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+UMKNext dibangun untuk membantu masyarakat menemukan UMKM lokal terbaik dengan cara yang lebih modern, informatif, dan menyenangkan.  
+Di tengah pesatnya perkembangan ekonomi digital, masih banyak UMKM yang kehilangan eksposur. Platform ini hadir sebagai solusi visual-first untuk memberikan spotlight agar lebih mudah ditemukan oleh masyarakat.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Fokus utama proyek ini:
+- Memberikan pengalaman eksplorasi yang nyaman  
+- Menyederhanakan pencarian UMKM  
+- Menggunakan integrasi AI untuk memberikan rekomendasi yang relevan  
+- Memberdayakan UMKM lokal secara digital  
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 👨‍💻 The Men Behind This Project
+
+
+### 🔹 Muhammad Naufal Waiz  
+Ketua Tim & Visionary  
+Universitas Negeri Jakarta  
+
+### 🔹 Muhammad Ihsan Nadhif  
+Frontend & AI Developer  
+Politeknik Elektronika Negeri Surabaya  
+
+### 🔹 Alvin Dwi Ardha  
+UI/UX Designer  
+Universitas Yarsi  
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React + Vite  
+- TypeScript  
+- TailwindCSS  
+- Material UI  
+- Framer Motion  
+- Axios  
+
+### AI Integration
+- OpenRouter API  
+  *(LLM-based recommendation engine)*
+
+### Deployment
+- **Vercel Hosting**
+
+---
+
+## 🧪 Local Development
+
+### Clone Repository
+```bash
+git clone https://github.com/dipndipp/UMKNext.git
+cd UMKNext
